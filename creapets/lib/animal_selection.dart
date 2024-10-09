@@ -7,7 +7,7 @@ class AnimalSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choisis ton Animal'),
+        title: const Text('Choisis ton Animal'), // Utilisation de const ici
         backgroundColor: Colors.blueAccent,
       ),
       body: Center(
@@ -23,37 +23,33 @@ class AnimalSelectionPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Sélectionne un animal à personnaliser',
                           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 20.0),
-                        Container(
-                          height: 200,
-                          width: 200,
-                          child: Flutter3DViewer.obj(
-                            src: 'assets/dog.obj', // Chemin de l'objet 3D du chien
-                            scale: 5, // Échelle de l'objet
-                            cameraX: 0,
-                            cameraY: 0,
-                            cameraZ: 10,
-                            onProgress: (double progressValue) {
-                              debugPrint('Chien - Progression de chargement : $progressValue');
-                            },
-                            onLoad: (String modelAddress) {
-                              debugPrint('Chien - Modèle chargé : $modelAddress');
-                            },
-                            onError: (String error) {
-                              debugPrint('Chien - Échec du chargement : $error');
-                            },
-                          ),
+                        const SizedBox(height: 20.0),
+                        Flutter3DViewer.obj(
+                          src: 'assets/dog.obj', // Chemin de l'objet 3D du chien
+                          scale: 5,
+                          cameraX: 0,
+                          cameraY: 0,
+                          cameraZ: 5,
+                          onProgress: (double progressValue) {
+                            debugPrint('model loading progress : $progressValue');
+                          },
+                          onLoad: (String modelAddress) {
+                            debugPrint('model loaded : $modelAddress');
+                          },
+                          onError: (String error) {
+                            debugPrint('model failed to load : $error');
+                          },
                         ),
                         ElevatedButton(
                           onPressed: () {
                             print("Animal sélectionné : Chien");
                             // Ici, tu peux ajouter une logique pour passer à la page de personnalisation
                           },
-                          child: Text('Chien'),
+                          child: const Text('Chien'), // Utilisation de const ici
                         ),
                       ],
                     ),
@@ -68,32 +64,28 @@ class AnimalSelectionPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          height: 200,
-                          width: 200,
-                          child: Flutter3DViewer.obj(
-                            src: 'assets/cat.obj', // Chemin de l'objet 3D du chat
-                            scale: 5, // Échelle de l'objet
-                            cameraX: 0,
-                            cameraY: 0,
-                            cameraZ: 10,
-                            onProgress: (double progressValue) {
-                              debugPrint('Chat - Progression de chargement : $progressValue');
-                            },
-                            onLoad: (String modelAddress) {
-                              debugPrint('Chat - Modèle chargé : $modelAddress');
-                            },
-                            onError: (String error) {
-                              debugPrint('Chat - Échec du chargement : $error');
-                            },
-                          ),
+                        Flutter3DViewer.obj(
+                          src: 'assets/cat.obj', // Chemin de l'objet 3D du chat
+                          scale: 5,
+                          cameraX: 0,
+                          cameraY: 0,
+                          cameraZ: 5,
+                          onProgress: (double progressValue) {
+                            debugPrint('model loading progress : $progressValue');
+                          },
+                          onLoad: (String modelAddress) {
+                            debugPrint('model loaded : $modelAddress');
+                          },
+                          onError: (String error) {
+                            debugPrint('model failed to load : $error');
+                          },
                         ),
                         ElevatedButton(
                           onPressed: () {
                             print("Animal sélectionné : Chat");
                             // Ici, tu peux ajouter une logique pour passer à la page de personnalisation
                           },
-                          child: Text('Chat'),
+                          child: const Text('Chat'), // Utilisation de const ici
                         ),
                       ],
                     ),
